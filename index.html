@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>iconicStats</title>
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="importmap">
+			{
+				"imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@v0.174.0/build/three.module.js",
+				"three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.174.0/examples/jsm/"
+				}
+			}
+		  </script>
+	</head>
+	<body>
+
+		<div class="right_group">
+			<div class="dropdown_right">
+				<div class="dropdown_button_simple">Sample</div>
+				<div class="dropdown_list_simple" id = "sampleList"></div>
+			</div>
+			<div class="main_checkbox">
+				<input type="checkbox" id="groupSells" name="groupSells" value="enabled">
+				<label for="groupSells">Groups</label><br>
+			</div>
+		</div>
+		
+		<div class="bars_container" id="barsContainer">
+			<div class="dropdowns_container" id = "dropdownButtons">
+				<div class = "dropdown" id="sells">
+					<button class="dropdown_button">Sells</button>
+					<div class="dropdown_list" id="sellsList">
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Beers</button>
+							<div class="dropdown_nested_list" id="beerList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Spirits</button>
+							<div class="dropdown_nested_list" id="spiritList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Soft</button>
+							<div class="dropdown_nested_list" id="softList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Nonalco</button>
+							<div class="dropdown_nested_list" id="noalcList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Other</button>
+							<div class="dropdown_nested_list" id="otherList"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class = "dropdown" id="filters">
+					<button class="dropdown_button">Filters</button>
+					<div class="dropdown_list" id="filterList">
+						<div class="big_checkbox">
+							<input type="checkbox" id="enableFilters" name="enableFilters" value="enabled">
+							<label for="enableFilters">Enabled</label><br>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Hours</button>
+							<div class="dropdown_nested_list" id="hourFilterList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Days</button>
+							<div class="dropdown_nested_list" id="dayFilterList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Months</button>
+							<div class="dropdown_nested_list" id="monthFilterList"></div>
+						</div>
+						<div class="dropdown_category">
+							<button class="dropdown_nested_button">Seasons</button>
+							<div class="dropdown_nested_list" id="seasonFilterList"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "dropdown" id="groupSettings">
+					<button class="dropdown_button">Group</button>
+					<div class="dropdown_list" id="groupProps">
+						<div class="dropdown_category">
+							<div class="texture_container">
+								<div class="texture_preview" id="sellsTexture"></div>
+								<div class="image_label" id="sellsTextureLabel">Texture</div>
+							</div>
+							<div class="dropdown_nested_list" id="sellsTextureList"></div>
+							<div class="texture_container">
+								<div class="texture_preview" id="tintColor"></div>
+								<div class="image_label" id="tintColorLabel">Tint</div>
+							</div>
+							<div class="dropdown_nested_list" id="tintColorList"></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id = "labels">
+			<canvas id="container"></canvas>
+		</div>
+
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>
