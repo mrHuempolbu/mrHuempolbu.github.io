@@ -10,9 +10,9 @@ import * as Constants from './defaultVars.js'
 function BarsMain(scene, width, height)
 {
 	this.sample = Constants.defaultSample;
-	this.width = width;
-	this.height = height;
-	this.grid = new BarsGrid(width, height, Constants.sepTexturePaths, {verLines : 11});
+	this.width = Constants.defaultBarsWidth;
+	this.height = Constants.defaultBarsHeight;
+	this.grid = new BarsGrid(this.width, this.height, Constants.sepTexturePaths, {verLines : 11});
 	this.scene = scene;
 	this.root = new THREE.Object3D();
 	this.advRoot = new THREE.Object3D();
@@ -24,7 +24,7 @@ function BarsMain(scene, width, height)
 	this.groupNextId = 2;
 	this.activeGroup = 0;
 
-	this.bars = new BarsSet(width, height, this.barPick_clb, this.barUnpick_clb, this);
+	this.bars = new BarsSet(this.width, this.height, this.barPick_clb, this.barUnpick_clb, this);
 	
 	this.root.add(this.bars.root);
 	this.root.add(this.grid.root);

@@ -97,8 +97,11 @@ export const tintColors =
 export const defaultTint = tintColors["None"];
 export const defaultSellsTexture = textures["Beer"];
 export const defaultSample = "by hour";
-export const defaultBarsWidth = 12;
-export const defaultBarsHeight = 4;
+
+let ratio = window.innerWidth / window.innerHeight;
+export const isVertical = (ratio < 1);
+export const defaultBarsWidth = (ratio >= 1) ? 12 : 8;
+export const defaultBarsHeight = (ratio >= 1) ? 4 : 8;
 
 export const hourNames = ["16", "17", "18", "19", "20", "21", "22", "23", "00", "01", "02"];
 export const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

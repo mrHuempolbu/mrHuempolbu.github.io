@@ -16,11 +16,12 @@ function CustomMax(texturePaths)
 CustomMax.prototype._createLabel = function(name, val)
 {
 	const text = document.createElement( 'div' );
-	text.className = 'label';
-	text.style.color = 'rgb(255, 255, 255)';
+	text.className = 'white_label';
 	text.textContent = val.toString();
 	
 	let label = new CSS2DObject( text );
+	if (Constants.isVertical)
+		label.center.copy(new THREE.Vector2(1, .5));
 	this.root.add(label);
 
 	const img = document.createElement('div');
@@ -193,8 +194,7 @@ BarsGrid.prototype.changeVertical = function(newNames)
 BarsGrid.prototype.makeLabel = function(labelText, pos)
 {
 	const text = document.createElement( 'div' );
-	text.className = 'label';
-	text.style.color = 'rgb(255, 255, 255)';
+	text.className = 'white_label';
 	text.textContent = labelText;
 	
 	let label = new CSS2DObject( text );

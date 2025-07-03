@@ -21,6 +21,13 @@ export function Application()
 
 	this.updates = [];
 
+	let ratio = window.innerWidth / window.innerHeight;
+	if (ratio < 1)
+	{
+		scene.rotateZ(-3.1416 * .5);
+		scene.translateX(-7);
+	}
+
 	function update() {
 		let dt = clock.getDelta();
 		renderer.render( scene, camera );

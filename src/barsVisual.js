@@ -245,10 +245,9 @@ Bar.prototype.pick = function()
 	this.mesh.material.uniforms.glowIntencity.value = 2.;
 
 	const text = document.createElement( 'div' );
-	text.className = 'label';
-	text.style.color = 'rgb(255, 255, 255)';
+	text.className = 'white_label';
 	text.textContent = this.value.values[1].toString();
-	text.style.backgroundColor = '#000000';
+	text.style.backgroundColor = '#151515';
 	
 	let label = new CSS2DObject( text );
 	

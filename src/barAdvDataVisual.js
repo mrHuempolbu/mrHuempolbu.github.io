@@ -24,8 +24,7 @@ export function AdvDataBar(root, props)
 	info += "\nmedian: " + props.median.toString() + "\nIQM: " + props.iqm.toFixed(0);
 
 	const textEl = document.createElement( 'div' );
-	textEl.className = 'label';
-	textEl.style.color = 'rgb(255, 255, 255)';
+	textEl.className = 'white_label';
 	textEl.textContent = info;
 	textEl.style.textAlign = 'right';
 	textEl.style.width = "120px";
@@ -33,15 +32,20 @@ export function AdvDataBar(root, props)
 	
 	this.infoLabel = new CSS2DObject( textEl );
 	this.infoLabel.center.copy(new THREE.Vector2(1, 1));
-	this.infoLabel.position.copy(new THREE.Vector3(1.5, 0, 0));
+	let ratio = window.innerWidth / window.innerHeight;
+	let pos = new THREE.Vector3(1.5, 0, 0);
+	if (ratio < 1)
+	{
+		pos = new THREE.Vector3(-5, 15, 0);
+	}
+	this.infoLabel.position.copy(pos);
 	root.add(this.infoLabel);
 }
 
 AdvDataBar.prototype.makeLabel = function(text, position)
 {
 	const textEl = document.createElement( 'div' );
-	textEl.className = 'label';
-	textEl.style.color = 'rgb(255, 255, 255)';
+	textEl.className = 'white_label';
 	textEl.textContent = text;
 	textEl.style.textAlign = 'right';
 	textEl.style.borderBottom = '1px solid #FFFFFF';

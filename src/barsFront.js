@@ -73,7 +73,7 @@ groupHeader.prototype.addRemoveButton = function()
 	this.removeButton.style.paddingLeft = "5px";
 	this.removeButton.style.borderLeft = "none";
 	this.removeButton.style.borderTop = "none";
-	this.barElement.style.width = "439px";
+	this.barElement.style.width = "calc(var(--button-width) * 3 + 19px - var(--button-height))";
 	this.line.appendChild(this.removeButton);
 	this.removeButton.addEventListener('click', function(e) 
 	{
@@ -86,7 +86,7 @@ groupHeader.prototype.removeRemoveButton = function()
 	if (!this.removeButton)
 		return;
 	this.removeButton.remove();
-	this.barElement.style.width = "469px";
+	this.barElement.style.width = "calc(var(--button-width) * 3 + 19px)";
 	this.removeButton = undefined;
 }
 
@@ -330,6 +330,11 @@ export function mainButtonsFront(callbackScope, filterEnable_clb, filter_clb, se
 		{
 			buttons[i].getElementsByClassName("dropdown_list")[0].classList.remove('active');
 		}
+	});
+	document.querySelectorAll('.dropdown_list').forEach(nestedList => {
+		nestedList.addEventListener('click', function(e) {
+			e.stopPropagation();	
+		});
 	});
 	document.querySelectorAll('.dropdown_nested_list').forEach(nestedList => {
 		nestedList.addEventListener('click', function(e) {
