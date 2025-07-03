@@ -26,6 +26,25 @@ body {
 	outline: none;
   }
 
+:root {
+	--big-font-size: 26px;
+	--big-font-weight: 700;
+	--small-font-size: 16px;
+	--small-font-weight: 500;
+	--button-width: 150px;
+	--button-height: 30px;
+}
+@media (max-aspect-ratio: 1/1) {
+	:root {
+		--big-font-size: 40px;
+		--big-font-weight: 800;
+		--small-font-size: 20px;
+		--small-font-weight: 700;
+		--button-width: 250px;
+		--button-height: 45px;
+	}
+}
+
 .dropdowns_container
 {
 	/*translate: 40px;*/
@@ -38,6 +57,16 @@ body {
 	display: inline-block;
 	right: 40px;
 	z-index: 1;
+}
+
+@media (max-aspect-ratio: 1/1) {
+	.right_group {
+		position: absolute;
+		display: inline-block;
+		bottom: 40px;
+		right: auto;
+		z-index: 1;
+	}
 }
 
 .dropdown_right {
@@ -55,9 +84,10 @@ body {
 	background-color: #bbff00;
 	font-family: 'Courier New Bold', Courier, monospace;
 	color: rgb(255, 0, 100);
-	font-size: 26px;
-	font-weight: 700;
-	width: 150px;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	width: var(--button-width);
+	height: var(--button-height);
 }
 label[for="groupSells"] {
 	margin-left: -10px;
@@ -71,9 +101,10 @@ label[for="groupSells"] {
 	background-color: #bbff00;
 	font-family: 'Courier New Bold', Courier, monospace;
 	color: rgb(255, 0, 100);
-	font-size: 26px;
-	font-weight: 700;
-	width: 150px;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	width: var(--button-width);
+	height: var(--button-height);
 }
 
 .big_checkbox:hover{
@@ -99,9 +130,10 @@ label[for="enableFilters"] {
 	background-color: #bbff00;
 	font-family: 'Courier New Bold', Courier, monospace;
 	color: rgb(255, 0, 100);
-	font-size: 26px;
-	font-weight: 700;
-	width: 150px;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	width: var(--button-width);
+	height: var(--button-height);
 	z-index: 1;
 }
 
@@ -111,9 +143,10 @@ label[for="enableFilters"] {
 	background-color: #bbff00;
 	font-family: 'Courier New Bold', Courier, monospace;
 	color: rgb(255, 0, 100);
-	font-size: 26px;
-	font-weight: 700;
-	width: 150px;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	width: var(--button-width);
+	height: var(--button-height);
 	z-index: 1;
 }
 
@@ -126,9 +159,10 @@ label[for="enableFilters"] {
 	text-align: left;
 	font-family: 'Courier New Bold', Courier, monospace;
 	color: rgb(255, 0, 100);
-	font-size: 26px;
-	font-weight: 700;
-	width: 150px;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	width: var(--button-width);
+	height: var(--button-height);
 	z-index: 1;
 }
 
@@ -182,15 +216,24 @@ label[for="enableFilters"] {
 .dropdown_list_simple {
 	display: none;
 	position: absolute;
+	
 	z-index: 1;
+}
+@media (max-aspect-ratio: 1/1) {
+	.dropdown_list_simple {
+		bottom: calc(var(--button-height));
+	}
 }
 
 .dropdown_list_simple label {
 	display: block;
 	cursor: pointer;
-	width: 150px;
+	width: var(--button-width);
+	height: var(--button-height);
 	background-color: #bbff00;
 	color: rgb(255, 0, 100);
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
 }
 
 .dropdown_list_simple label:hover {
@@ -201,9 +244,12 @@ label[for="enableFilters"] {
 .dropdown_nested_list label {
 	display: block;
 	cursor: pointer;
-	width: 150px;
+	width: var(--button-width);
+	height: var(--button-height);
 	background-color: #bbff00;
 	color: rgb(255, 0, 100);
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
 }
 
 .dropdown_nested_list label:hover {
@@ -214,11 +260,11 @@ label[for="enableFilters"] {
 .bar_line { 
 	display: flex;
 	align-items: stretch;
-	height: 30px;
+	height: var(--button-height);
 }
 
 .bar {
-	width: 469px;
+	width: calc(var(--button-width) * 300% + 19px);
 	display: inline-flex;
 	border: 2px solid #bbff00;
 	border-top: none;
@@ -232,8 +278,8 @@ label[for="enableFilters"] {
 	cursor: pointer;
 	align-items: center;
 	color: rgb(255, 0, 100);
-	font-size: 20px;
-	font-weight: 600;
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
 	display: inline-flex;
 	align-items: center;
 	height: 100%
@@ -246,8 +292,9 @@ label[for="enableFilters"] {
 	background-color: #151515;
 	cursor: pointer;
 	color: rgb(255, 0, 100);
-	font-size: 16px;
-	height: 100%
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
+	height: 100%;
 }
 
 .bar:hover {
@@ -261,11 +308,11 @@ label[for="enableFilters"] {
 	cursor: pointer;
 	background-color: #151515;
 	font-family: 'Courier New Bold', Courier, monospace;
-	font-size: 28px;
-	font-weight: 700;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
 	color: rgb(255, 0, 100);
-	width: 30px;
-	height: 30px;
+	width: var(--button-height);
+	height: var(--button-height);
 	text-align: center;
 	box-sizing: border-box;
 }
@@ -276,28 +323,41 @@ label[for="enableFilters"] {
 
 .texture_container {
 	white-space: nowrap;
-	width: 150px;
-	height: 30px;
+	width: var(--button-width);
+	height: var(--button-height);
 }
 
 .texture_preview {
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: var(--button-height);
+	height: var(--button-height);
 	background-size: cover;
 	cursor: default;
 	background-color: #bbff00;
+}
+
+.image_big_label {
+	display: inline-block;
+	position: absolute;
+	cursor:default;
+	height: var(--button-height);
+	width: calc(var(--button-width) - var(--button-height));
+	font-family: 'Courier New Bold', Courier, monospace;
+	font-size: var(--big-font-size);
+	font-weight: var(--big-font-weight);
+	background-color: #bbff00;
+	color: rgb(255, 0, 100);
 }
 
 .image_label {
 	display: inline-block;
 	position: absolute;
 	cursor:default;
-	height: 30px;
-	width: 120px;
+	height: var(--button-height);
+	width: calc(var(--button-width) - var(--button-height));
 	font-family: 'Courier New Bold', Courier, monospace;
-	font-size: 24px;
-	font-weight: 600;
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
 	background-color: #bbff00;
 	color: rgb(255, 0, 100);
 }
@@ -315,4 +375,10 @@ label[for="enableFilters"] {
 .texture_container:hover + .dropdown_nested_list,
 .dropdown_nested_list:hover{
 	display: block;
+}
+
+.white_label{
+	font-size: var(--small-font-size);
+	font-weight: var(--small-font-weight);
+	color: rgb(255, 2550, 255);
 }
