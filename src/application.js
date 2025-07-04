@@ -25,7 +25,7 @@ export function Application()
 	if (ratio < 1)
 	{
 		scene.rotateZ(-3.1416 * .5);
-		scene.translateX(-7);
+		scene.translateX(-6);
 	}
 
 	function update() {

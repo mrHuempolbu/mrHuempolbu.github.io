@@ -15,7 +15,7 @@ function groupHeader(parent, id, name, isClosed)
 	this.barElement.className = 'bar';
 		
 	this.barHeader1 = document.createElement('span');
-	this.barHeader1.textContent = isClosed ? ">" : "˅";
+	this.barHeader1.textContent = isClosed ? ">" : "v";
 	this.barHeader1.className = 'bar_header_arrow';
 
 	this.barHeader2 = document.createElement('span');
@@ -56,7 +56,7 @@ function groupHeader(parent, id, name, isClosed)
 
 groupHeader.prototype.swingGroup = function(close)
 {
-	this.barHeader1.textContent = close ? ">" : "˅";
+	this.barHeader1.textContent = close ? ">" : "v";
 }
 groupHeader.prototype.remove = function()
 {
@@ -70,10 +70,10 @@ groupHeader.prototype.addRemoveButton = function()
 	this.removeButton = document.createElement('div');
 	this.removeButton.textContent = "-";
 	this.removeButton.className = "bar_button";
-	this.removeButton.style.paddingLeft = "5px";
+	//this.removeButton.style.paddingLeft = "5px";
 	this.removeButton.style.borderLeft = "none";
 	this.removeButton.style.borderTop = "none";
-	this.barElement.style.width = "calc(var(--button-width) * 3 + 19px - var(--button-height))";
+	this.barElement.style.width = "calc(var(--button-width) * 3 + 18px - var(--button-height))";
 	this.line.appendChild(this.removeButton);
 	this.removeButton.addEventListener('click', function(e) 
 	{
@@ -86,7 +86,7 @@ groupHeader.prototype.removeRemoveButton = function()
 	if (!this.removeButton)
 		return;
 	this.removeButton.remove();
-	this.barElement.style.width = "calc(var(--button-width) * 3 + 19px)";
+	this.barElement.style.width = "calc(var(--button-width) * 3 + 18px)";
 	this.removeButton = undefined;
 }
 
@@ -194,7 +194,7 @@ groupsFront.prototype.removeGroup = function(id)
 groupsFront.prototype.addGroup = function(id, name, isClosed)
 {
 	this.bars[id] = new groupHeader(this, id, name, isClosed);
-	this.addButton.style.display = "block";
+	this.addButton.style.display = "inline-flex";
 
 	let addRemoveButton = (Object.keys(this.bars).length > 1);
 	if (addRemoveButton)
@@ -395,6 +395,7 @@ mainButtonsFront.prototype.addCheckboxes = function(id, list, defaultValue = fal
 		checkbox.value = item;
 		checkbox.checked = defaultValue;
 		checkbox.id = item;
+		label.className = "dropdown_nested_list_label";
 		label.appendChild(checkbox);
 		label.appendChild(document.createTextNode(item));
 		checkboxList.appendChild(label);

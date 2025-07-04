@@ -100,8 +100,8 @@ export const defaultSample = "by hour";
 
 let ratio = window.innerWidth / window.innerHeight;
 export const isVertical = (ratio < 1);
-export const defaultBarsWidth = (ratio >= 1) ? 12 : 8;
-export const defaultBarsHeight = (ratio >= 1) ? 4 : 8;
+export const defaultBarsWidth = (ratio >= 1) ? 12 : 10;
+export const defaultBarsHeight = (ratio >= 1) ? 4 : 10;
 
 export const hourNames = ["16", "17", "18", "19", "20", "21", "22", "23", "00", "01", "02"];
 export const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

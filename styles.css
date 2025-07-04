@@ -1,7 +1,7 @@
 body {
 	background-color: #151515;
 	color: #fff;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	margin: 0;
 	padding: 20px;
 }
@@ -27,22 +27,33 @@ body {
   }
 
 :root {
+	--font: 'JetBrains Mono', Jetbrains, monospace;
 	--big-font-size: 26px;
 	--big-font-weight: 700;
 	--small-font-size: 16px;
 	--small-font-weight: 500;
-	--button-width: 150px;
+	--button-width: 170px;
 	--button-height: 30px;
+	--border-width: 2px;
+	--checkbox-scale: 1.;
 }
 @media (max-aspect-ratio: 1/1) {
 	:root {
 		--big-font-size: 40px;
 		--big-font-weight: 800;
-		--small-font-size: 20px;
+		--small-font-size: 22px;
 		--small-font-weight: 700;
 		--button-width: 250px;
-		--button-height: 45px;
+		--button-height: 75px;
+		--border-width: 4px;
+		--checkbox-scale: 1.5;
 	}
+}
+
+input[type="checkbox"] {
+	transform: scale(var(--checkbox-scale));
+	transform-origin: left center;
+	margin-right: calc(8px * var(--checkbox-scale));
 }
 
 .dropdowns_container
@@ -54,17 +65,21 @@ body {
 
 .right_group {
 	position: absolute;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	right: 40px;
+	gap: 10px;
 	z-index: 1;
 }
 
 @media (max-aspect-ratio: 1/1) {
 	.right_group {
 		position: absolute;
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
 		bottom: 40px;
 		right: auto;
+		gap: 10px;
 		z-index: 1;
 	}
 }
@@ -77,12 +92,14 @@ body {
 
 .main_checkbox
 {
-	position: relative;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 	border: none;
 	cursor: pointer;
 	background-color: #bbff00;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	color: rgb(255, 0, 100);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
@@ -90,7 +107,6 @@ body {
 	height: var(--button-height);
 }
 label[for="groupSells"] {
-	margin-left: -10px;
 	cursor: pointer;
 }
 
@@ -99,7 +115,7 @@ label[for="groupSells"] {
 	border: none;
 	cursor: pointer;
 	background-color: #bbff00;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	color: rgb(255, 0, 100);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
@@ -128,7 +144,7 @@ label[for="enableFilters"] {
 	border: none;
 	cursor: pointer;
 	background-color: #bbff00;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	color: rgb(255, 0, 100);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
@@ -138,10 +154,13 @@ label[for="enableFilters"] {
 }
 
 .dropdown_button_simple {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: none;
 	cursor: pointer;
 	background-color: #bbff00;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	color: rgb(255, 0, 100);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
@@ -157,7 +176,7 @@ label[for="enableFilters"] {
 	position: relative;
 	background-color: #bbff00;
 	text-align: left;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	color: rgb(255, 0, 100);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
@@ -226,7 +245,7 @@ label[for="enableFilters"] {
 }
 
 .dropdown_list_simple label {
-	display: block;
+	display: flex;
 	cursor: pointer;
 	width: var(--button-width);
 	height: var(--button-height);
@@ -234,6 +253,8 @@ label[for="enableFilters"] {
 	color: rgb(255, 0, 100);
 	font-size: var(--small-font-size);
 	font-weight: var(--small-font-weight);
+	align-items: center;
+	padding-left: 5px;
 }
 
 .dropdown_list_simple label:hover {
@@ -241,8 +262,8 @@ label[for="enableFilters"] {
 	color: #bbff00
 }
 
-.dropdown_nested_list label {
-	display: block;
+.dropdown_nested_list_label {
+	display: flex;
 	cursor: pointer;
 	width: var(--button-width);
 	height: var(--button-height);
@@ -250,9 +271,19 @@ label[for="enableFilters"] {
 	color: rgb(255, 0, 100);
 	font-size: var(--small-font-size);
 	font-weight: var(--small-font-weight);
+	width: calc(var(--button-width) + 9px);
+	margin: auto;
+	align-items: center
 }
 
-.dropdown_nested_list label:hover {
+
+.dropdown_nested_list_label > input
+{
+	background-color: rgb(0, 255, 100);
+	color: aquamarine;
+}
+
+.dropdown_nested_list_label:hover {
 	background-color: rgb(255, 0, 100);
 	color: #bbff00;
 }
@@ -264,9 +295,9 @@ label[for="enableFilters"] {
 }
 
 .bar {
-	width: calc(var(--button-width) * 300% + 19px);
+	width: calc(var(--button-width) * 3 + 19px);
 	display: inline-flex;
-	border: 2px solid #bbff00;
+	border: var(--border-width) solid #bbff00;
 	border-top: none;
 	height: 100%;
 	box-sizing: border-box;
@@ -303,17 +334,17 @@ label[for="enableFilters"] {
 
 .bar_button {
 	display: inline-flex;
+	justify-content: center;
 	align-items: center;
-	border: 2px solid #bbff00;
+	border: var(--border-width) solid #bbff00;
 	cursor: pointer;
 	background-color: #151515;
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
 	color: rgb(255, 0, 100);
 	width: var(--button-height);
 	height: var(--button-height);
-	text-align: center;
 	box-sizing: border-box;
 }
 
@@ -322,13 +353,15 @@ label[for="enableFilters"] {
 }
 
 .texture_container {
+	display: flex;
+	align-items: center;
 	white-space: nowrap;
 	width: var(--button-width);
 	height: var(--button-height);
+	position: relative;
 }
-
 .texture_preview {
-	display: inline-block;
+	display: flex;
 	width: var(--button-height);
 	height: var(--button-height);
 	background-size: cover;
@@ -337,12 +370,13 @@ label[for="enableFilters"] {
 }
 
 .image_big_label {
-	display: inline-block;
-	position: absolute;
+	display: flex;
+	align-items: center;
 	cursor:default;
+	margin: auto;
 	height: var(--button-height);
 	width: calc(var(--button-width) - var(--button-height));
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	font-size: var(--big-font-size);
 	font-weight: var(--big-font-weight);
 	background-color: #bbff00;
@@ -350,16 +384,18 @@ label[for="enableFilters"] {
 }
 
 .image_label {
-	display: inline-block;
-	position: absolute;
+	display: flex;
 	cursor:default;
+	margin: auto;
+	padding-left: 5px;
 	height: var(--button-height);
 	width: calc(var(--button-width) - var(--button-height));
-	font-family: 'Courier New Bold', Courier, monospace;
+	font-family: var(--font);
 	font-size: var(--small-font-size);
 	font-weight: var(--small-font-weight);
 	background-color: #bbff00;
 	color: rgb(255, 0, 100);
+	align-items: center;
 }
 
 
