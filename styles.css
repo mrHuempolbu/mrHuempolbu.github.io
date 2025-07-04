@@ -35,7 +35,7 @@ body {
 	--button-width: 170px;
 	--button-height: 30px;
 	--border-width: 2px;
-	--checkbox-scale: 1.;
+	--checkbox-scale: 1;
 }
 @media (max-aspect-ratio: 1/1) {
 	:root {
